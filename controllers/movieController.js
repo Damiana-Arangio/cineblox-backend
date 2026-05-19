@@ -166,7 +166,7 @@ function storeMovie(req, res) {
         res.status(201).json(
             {
                 id: newMovieResult.insertId,                    // Restituisco id assegnato automaticamente dal db
-                message: "Recensione aggiunta con successo!"    // Restituisco messaggio di conferma
+                message: "Film aggiunto con successo!"          // Restituisco messaggio di conferma
             });
     })
 

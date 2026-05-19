@@ -4,6 +4,22 @@
 
 const multer = require('multer');  // Import del middleware multer per gestire i file in ingresso
 
+/************************
+    VALIDAZIONE FILE
+*************************/
+
+// Controlla che il file caricato sia jpg, jpeg, png o webp
+const fileFilter = (req, file, cb) => {
+
+    const formatiAccettati = ['image/jpeg', 'image/png', 'image/webp'];
+
+    if (formatiAccettati.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(new Error('Formato immagine non valido!'), false);
+    }
+};
+
 /****************************
     CONFIGURAZIONE STORAGE
 *****************************/
@@ -20,27 +36,11 @@ const storage = multer.diskStorage({
     },
 });
 
-/************************
-    VALIDAZIONE FILE
-*************************/
-
-// Controlla che il file caricato sia jpg, jpeg, png o webp
-const fileFilter = (req, file, cb) => {
-
-    const formatiAccettati = [ 'image/jpeg', 'image/png', 'image/webp' ];
-
-    if (formatiAccettati.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(new Error('Formato immagine non valido'), false);
-    }
-};
-
 /****************
     MIDDLEWARE
 ****************/
 
-// Creazione middleware multer con storage e controllo formato file
+// Creazione middleware multer
 const upload = multer({ storage, fileFilter }); 
 
 /************
