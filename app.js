@@ -10,7 +10,7 @@ const moviesRouter = require('./routers/moviesRouter');      // Import del route
 const errorServer = require('./middlewares/errorServer');    // Import del middleware errorServer
 const notFound = require('./middlewares/notFound');          // Import del middleware notFound
 const imagePath = require('./middlewares/imagePath');        // Import del middleware imagePath
-
+const errorMulter = require('./middlewares/errorMulter');    // Import del middleware errorMulter per gestire l'errore del formato immagine non valido
 
 /***************************
     CONFIGURAZIONE EXPRESS
@@ -27,8 +27,9 @@ app.use(imagePath);                                     // Registrazione del mid
 app.use(express.static('public'));                      // Registrazione del middleware per rendere accessibili i file statici (es. immagini) contenuti nella cartella "public"
 app.use(express.json());                                // Registrazione del middleware per leggere il body delle richieste HTTP
 app.use('/api/movies', moviesRouter);                   // Registrazione del router con prefisso /api 
-app.use(errorServer);                                   // Registrazione del middleware "errorServer" che gestisce gli errori interni del server 
+app.use(errorMulter);                                   // Registrazione del middleware "errorMulter" che gestisce il formato immagine non valido generato da Multer
 app.use(notFound);                                      // Registrazione del middleware "notFound" che gestisce le rotte inesistenti (404 Not Found)
+app.use(errorServer);                                   // Registrazione del middleware "errorServer" che gestisce gli errori interni del server 
 
 
 /*********************
