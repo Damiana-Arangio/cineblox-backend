@@ -17,12 +17,16 @@ const errorMulter = require('./middlewares/errorMulter');    // Import del middl
 ****************************/
 const app = express();           // Inizializzazione dell'app Express
 const port = 3000;               // Definizione della porta su cui il server deve rimanere in ascolto
-
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:5175'
+];
 
 /***************
     MIDDLEWARE
 ****************/
-app.use(cors({ origin: 'http://localhost:5173' }))      // Registrazione del middleware cors per consentire al server di specificare quali origini possono accedere alle sue risorse
+app.use(cors({ origin: allowedOrigins }))      // Registrazione del middleware cors per consentire al server di specificare quali origini possono accedere alle sue risorse
 app.use(imagePath);                                     // Registrazione del middleware per gestire dinamicamente il path delle immagini
 app.use(express.static('public'));                      // Registrazione del middleware per rendere accessibili i file statici (es. immagini) contenuti nella cartella "public"
 app.use(express.json());                                // Registrazione del middleware per leggere il body delle richieste HTTP
