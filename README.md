@@ -1,80 +1,45 @@
-<p align="center">
-  <img src="./public/imgs/boolean-logo.png" alt="Boolean Logo" width="35">
-</p>
+<h1 align="center">🎬 Cineblox - Backend</h1>
 
-<h1 align="center">Web App Express</h1>
+Backend di un'applicazione full-stack dedicata al mondo del cinema, sviluppato con **Node.js**, **Express** e **MySQL**.
 
-Backend di una web application full-stack per la gestione di film e recensioni, sviluppato con Express.js e MySQL.
+Il backend espone API REST per la gestione di film, recensioni e caricamento immagini.
 
-Frontend collegato:  
-https://github.com/Damiana-Arangio/webapp-react.git
+Frontend repository:  
+[cineblox-frontend](https://github.com/Damiana-Arangio/cineblox-frontend)
 
 ---
 
-## Descrizione del progetto
+# Implementazione backend
 
-Il backend fornisce API REST per:
-- recuperare la lista dei film
-- ottenere il dettaglio di un film con recensioni
-- inserire nuove recensioni
-- inserire nuovi film
+- Architettura REST API con Express
+- Separazione tra router, controller e middleware
+- Connessione database MySQL
+- Query SQL con JOIN per recupero relazioni
+- Gestione upload immagini con Multer
+- Validazione dati tramite express-validator
+- Gestione CORS per comunicazione frontend/backend
+- Gestione errori centralizzata
+- Utilizzo di variabili d’ambiente per configurazione server e database
 
-Gestisce la persistenza dei dati tramite database MySQL ed è progettato per comunicare con un frontend React.
+# Stack
 
----
-
-## Funzionalità principali
-
-- Connessione a database MySQL
-- API REST per film e recensioni
-- Recupero dati con JOIN
-- Inserimento dati tramite POST
-- Gestione CORS per integrazione frontend
-- Gestione errori e rotte inesistenti
-- Separazione tra router e controller
-
----
-
-## Architettura backend
-
-- Express.js
-- Controller dedicati
-- Router modulari
-- Middleware per:
-  - CORS
-  - error handling
-  - rotte non valide
-- Variabili d’ambiente per configurazione DB
-
----
-
-## Avvio dell’applicazione
-
-Installare le dipendenze:
-```bash
-    npm install
-```
-
-Avviare il server:
-```bash
-    npm run start
-```
-
-Avvio in modalità watch:
-```bash
-    npm run watch
-```
-
-## Prerequisiti
-
-- Node.js
-- MySQL Server
-
-
-## Tecnologie utilizzate
-
+## Backend
 - Node.js
 - Express.js
-- JavaScript
+- Multer
+- express-validator
+- CORS
+
+## Database
 - MySQL
-- MySQL Workbench
+
+---
+
+# Setup progetto
+
+## 1. Clona il backend
+
+```bash
+git clone https://github.com/Damiana-Arangio/cineblox-backend.git
+cd cineblox-backend
+npm install
